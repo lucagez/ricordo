@@ -7,5 +7,8 @@ module.exports = {
     "globals": {
         "describe": true,
         "it": true,
+    },
+    "rules": {
+        "no-underscore-dangle": "off",
     }
 };

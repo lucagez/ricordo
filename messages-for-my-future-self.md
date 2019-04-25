@@ -1,16 +1,17 @@
 # MESSAGES FOR MY FUTURE SELF
 
-> Last Update: Thu 25 Apr 10:04:28
+> Last Update: Thu 25 Apr 19:34:42
 
-Pretty solid implementation. No config whatsoever. => Must investigate on a cron-job.
+Working on trap extension => Maybe we'll need cron too.
+=> Usable also with liits and bomb.
 
 # TODO
 
-- [ ] Jot down config object
+- [x] Jot down config object
   - [ ] stats => frequency
   - [ ] limits
   - [ ] boom => destroy
-- [ ] Travis integration => .travis.yml config file
+- [x] Travis integration => .travis.yml config file
 - [ ] readme
 - [ ] logo
 - [ ] browser tests
