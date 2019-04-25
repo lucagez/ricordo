@@ -1,0 +1,27 @@
+{
+  "name": "ricordo",
+  "version": "0.0.1",
+  "description": "Micro function caching / memo library for JS",
+  "source": "src/ricordo.mjs",
+  "main": "dist/ricordo.js",
+  "module": "dist/ricordo.mjs",
+  "unpkg": "dist/ricordo.umd.js",
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucagez/ricordo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucagez/ricordo/issues"
+  },
+  "homepage": "https://github.com/lucagez/ricordo#readme",
+  "devDependencies": {
+    "microbundle": "^0.11.0"
+  }
+}
