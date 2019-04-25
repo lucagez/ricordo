@@ -13,8 +13,8 @@ function run(...args) {
 }
 
 export default class Ricordo {
-  constructor(func, config) {
-    // CONFIG SI VEDRA` (:
+  // CONFIG SI VEDRA` (:
+  constructor(func) {
     if (typeof func !== 'function') throw new TypeError('func argument must be of type `function`');
 
     this.map = new Map();
@@ -22,4 +22,4 @@ export default class Ricordo {
 
     return run.bind(this);
   }
-};
+}
