@@ -1,12 +1,13 @@
+
 // This func exposes the newly created `Ricordo` instance.
 // Interacting with the inner class method (private).
 function run(...args) {
-  // Avoiding stringification of simple arguments as js Map support any type.
+  // Avoiding stringification of simple arguments as js store support any type.
   // By simple I mean every type comparable `simply` with the strict equality operator `===`.
   // => Comparing simple arrais and objects is simpler by stringifying them
   // and comparing the resulting strings.
 
-  // NOTE-1: this is not tested with complex structure.
+  // NOTE-1: this is not tested with objects with a complex structure.
 
   // NOTE-2: this func will throw error if a circular structure is provided.
   // Support for those structures is out of the scope of this library
@@ -17,20 +18,39 @@ function run(...args) {
     return JSON.stringify(args);
   })();
 
-  if (this.map.has(key)) return this.map.get(key);
+  if (this.store.has(key)) return this.store.get(key);
 
   const result = this.func(...args);
-  this.map.set(key, result);
+  this.store.set(key, result);
   return result;
 }
 
+// For stats => just override Map (extends) native implementation
+// Actually add `has`.
+// class MyMap extends Map {
+//   set(...args) {
+//     console.log("set called");
+//     return super.set(...args);
+//   }
+//   get(...args) {
+//     console.log("get called");
+//     return super.get(...args);
+//   }
+// }
+
 export default class Ricordo {
   // CONFIG SI VEDRA` (:
-  constructor(func) {
+  constructor(func, config) {
     if (typeof func !== 'function') throw new TypeError('func argument must be of type `function`');
+    if (typeof config !== 'object') throw new TypeError('config argument must be of type `object`');
 
-    this.map = new Map();
+    // Key value store used for caching `arguments => results`
+    this.store = new Map();
     this.func = func;
+
+    // NOPE
+    // Launching async stats => cron job.
+    // _stats.bind(this)(config);
 
     return run.bind(this);
   }
