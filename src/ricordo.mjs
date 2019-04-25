@@ -6,7 +6,7 @@ function run(...args) {
   // => Comparing simple arrais and objects is simpler by stringifying them
   // and comparing the resulting strings.
 
-  // NOTE-1: this is not tested with complex structure.
+  // NOTE-1: this is not tested with objects with a complex structure.
 
   // NOTE-2: this func will throw error if a circular structure is provided.
   // Support for those structures is out of the scope of this library
