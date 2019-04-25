@@ -1,3 +1,0 @@
-describe('Core Ricordo tests', () => {
-
-});
