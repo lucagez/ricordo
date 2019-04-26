@@ -44,7 +44,7 @@ describe('Trap tests', () => {
     const a = await bench(cached, [{ n: 1 }]); // 200ms
     const b = await bench(cached, [{ n: 1 }]); // 0ms
 
-    await sleep(1100);
+    await sleep(2000);
 
     const c = await bench(cached, [{ n: 1 }]); // 200ms
 
@@ -82,5 +82,62 @@ describe('Trap tests', () => {
     expect(f).to.be.a('number').below(5);
     expect(g).to.be.a('number').above(198);
     expect(h).to.be.a('number').above(198);
+  });
+
+  it('Should throw if a config object is provided and ttl is not present or smaller than 1000', () => {
+    const withSmaller = () => new Ricordo(a => a + 1, { ttl: 100 });
+    const withOut = () => new Ricordo(a => a + 1, {});
+
+    expect(withSmaller).to.throw();
+    expect(withOut).to.throw();
+  });
+
+  it('Should throw if limit is provided without ideal prop', () => {
+    const cached = () => new Ricordo(a => a + 1, { ttl: 1000, limit: 30 });
+
+    expect(cached).to.throw();
+  });
+
+  it('Should remove key after timeout if force flag is true', async () => {
+    const func = async (arg) => {
+      await sleep(200);
+      return arg.n * 2;
+    };
+    const cached = new Ricordo(func, { ttl: 1000, force: true });
+    const a = await bench(cached, [{ n: 1 }]); // 200ms
+
+    await sleep(200);
+
+    // No insertion
+    const b = await bench(cached, [{ n: 1 }]); // 0ms
+
+    await sleep(1100);
+
+    const c = await bench(cached, [{ n: 1 }]); // 200ms
+
+    expect(a).to.be.a('number').above(198);
+    expect(b).to.be.a('number').below(5);
+    expect(c).to.be.a('number').above(198);
+  });
+
+  it('Should destroy every cached key when `destroy` method is called', async () => {
+    const func = async (arg) => {
+      await sleep(200);
+      return arg.n * 2;
+    };
+    const cached = new Ricordo(func, { ttl: 1000 });
+
+    const a = await bench(cached, [{ n: 1 }]); // 200ms
+    const b = await bench(cached, [{ n: 2 }]); // 200ms
+
+    cached.destroy();
+
+    const c = await bench(cached, [{ n: 1 }]); // 200ms
+    const d = await bench(cached, [{ n: 2 }]); // 200ms
+
+    expect(a).to.be.a('number').above(198);
+    expect(b).to.be.a('number').above(198);
+    expect(c).to.be.a('number').above(198);
+    expect(d).to.be.a('number').above(198);
   });
 });

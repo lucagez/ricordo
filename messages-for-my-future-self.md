@@ -8,12 +8,12 @@ Implemented trap extension with ttl behavior => Writing tests for new feature.
 
 - [ ] readme
 - [ ] logo
-- [ ] browser tests
-  - [ ] By now is 100% compatible.
+- [x] browser tests
+  - [x] By now is 100% compatible.
 - [x] Write tests for trap.
-- [ ] tests
-  - [ ] Throw:
-    - [ ] if no ttl
-    - [ ] if limit but no ideal
-  - [ ] force => use micro timer.
-  - [ ] destroy
+- [x] tests
+  - [x] Throw:
+    - [x] if no ttl
+    - [x] if limit but no ideal
+  - [x] force => use micro timer.
+  - [x] destroy
