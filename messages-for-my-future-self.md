@@ -12,8 +12,9 @@ Working on trap extension => Maybe we'll need cron too.
   - [x] limits
   - [x] boom => destroy
 - [x] Travis integration => .travis.yml config file
-- [ ] Implement behaviors
+- [x] Implement behaviors
 - [ ] readme
 - [ ] logo
 - [ ] browser tests
   - [ ] By now is 100% compatible.
+- [x] clear func?

@@ -1,3 +1,4 @@
+import _Trap from './_trap';
 
 // This func exposes the newly created `Ricordo` instance.
 // Interacting with the inner class method (private).
@@ -18,53 +19,39 @@ function run(...args) {
     return JSON.stringify(args);
   })();
 
-  if (this.store.has(key)) return this.store.get(key);
+  if (this.cache.has(key)) return this.cache.get(key);
 
   const result = this.func(...args);
-  this.store.set(key, result);
+  this.cache.set(key, result);
   return result;
 }
 
-// For stats => just override Map (extends) native implementation
-// Actually add `has`.
-// class MyMap extends Map {
-//   set(...args) {
-//     console.log("set called");
-//     return super.set(...args);
-//   }
-//   get(...args) {
-//     console.log("get called");
-//     return super.get(...args);
-//   }
-// }
 
-class _Trap {
-  constructor() {
-    this.map = new Map();
-  }
-
-  has(...args) {
-    return this.map.has(...args);
-  }
-
-  get(...args) {
-    return this.map.get(...args);
-  }
-
-  set(...args) {
-    return this.map.set(...args);
-  }
+function _destroy() {
+  // Destroy previous cache instance and re-initializing to empty tate according to
+  // provided config object.
+  this.cache = this.init(this.config);
 }
 
+const _init = config => config ? new _Trap(config) : new Map();
+
 export default class Ricordo {
-  // CONFIG SI VEDRA` (:
   constructor(func, config) {
     if (typeof func !== 'function') throw new TypeError('func argument must be of type `function`');
 
-    // Key value store used for caching `arguments => results`
-    this.store = config ? new _Trap(config) : new Map();
+    // Used in `run`
     this.func = func;
 
-    return run.bind(this);
+    // Useful for `destroy` method.
+    this.init = _init;
+    this.config = config;
+
+    // Key value store used for caching `arguments => results`
+    this.cache = _init(config);
+
+    const expose = run.bind(this);
+    expose.destroy = _destroy.bind(this);
+
+    return expose;
   }
 }

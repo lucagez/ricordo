@@ -10,5 +10,7 @@ module.exports = {
     },
     "rules": {
         "no-underscore-dangle": "off",
+        "object-curly-newline": "off",
+        "no-confusing-arrow": "off",
     }
 };
