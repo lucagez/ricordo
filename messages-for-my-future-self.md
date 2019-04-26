@@ -8,10 +8,12 @@ Working on trap extension => Maybe we'll need cron too.
 # TODO
 
 - [x] Jot down config object
-  - [ ] stats => frequency
-  - [ ] limits
-  - [ ] boom => destroy
+  - [x] stats => frequency
+  - [x] limits
+  - [x] boom => destroy
 - [x] Travis integration => .travis.yml config file
+- [ ] Implement behaviors
 - [ ] readme
 - [ ] logo
 - [ ] browser tests
+  - [ ] By now is 100% compatible.

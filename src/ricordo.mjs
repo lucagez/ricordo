@@ -38,19 +38,32 @@ function run(...args) {
 //   }
 // }
 
+class _Trap {
+  constructor() {
+    this.map = new Map();
+  }
+
+  has(...args) {
+    return this.map.has(...args);
+  }
+
+  get(...args) {
+    return this.map.get(...args);
+  }
+
+  set(...args) {
+    return this.map.set(...args);
+  }
+}
+
 export default class Ricordo {
   // CONFIG SI VEDRA` (:
-  constructor(func, config = {}) {
+  constructor(func, config) {
     if (typeof func !== 'function') throw new TypeError('func argument must be of type `function`');
-    if (typeof config !== 'object') throw new TypeError('config argument must be of type `object`');
 
     // Key value store used for caching `arguments => results`
-    this.store = new Map();
+    this.store = config ? new _Trap(config) : new Map();
     this.func = func;
-
-    // NOPE
-    // Launching async stats => cron job.
-    // _stats.bind(this)(config);
 
     return run.bind(this);
   }
