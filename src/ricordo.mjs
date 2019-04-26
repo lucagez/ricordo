@@ -40,7 +40,7 @@ function run(...args) {
 
 export default class Ricordo {
   // CONFIG SI VEDRA` (:
-  constructor(func, config) {
+  constructor(func, config = {}) {
     if (typeof func !== 'function') throw new TypeError('func argument must be of type `function`');
     if (typeof config !== 'object') throw new TypeError('config argument must be of type `object`');
 
