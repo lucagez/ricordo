@@ -12,5 +12,6 @@ module.exports = {
         "no-underscore-dangle": "off",
         "object-curly-newline": "off",
         "no-confusing-arrow": "off",
+        "no-prototype-builtins": "off",
     }
 };

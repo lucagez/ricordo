@@ -33,7 +33,7 @@ export default class _Trap {
   }
 
   set(key, value) {
-    if (this.limit && this.store.size > this.limit) this.onLimit();
+    if (this.limit && this.store.size >= this.limit - 1) this.onLimit();
 
     // Initializing ttl.
     setTimeout(() => this.onTimeout(key), this.ttl);
@@ -42,8 +42,11 @@ export default class _Trap {
 
   onTimeout(key) {
     // When force is set to `true` => key is delete from cache by default.
-    if (this.stats.has(key) && !this.force) this.stats.set(key, 0);
-    else this.store.delete(key);
+    if (this.stats.get(key) === 0 || !this.stats.has(key) || !this.force) this.store.delete(key);
+    else {
+      this.stats.set(key, 0);
+      setTimeout(() => this.onTimeout(key), this.ttl);
+    }
   }
 
   onLimit() {

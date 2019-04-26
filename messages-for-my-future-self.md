@@ -1,20 +1,19 @@
 # MESSAGES FOR MY FUTURE SELF
 
-> Last Update: Thu 25 Apr 19:34:42
+> Last Update: Fri 26 Apr 14:46:15
 
-Working on trap extension => Maybe we'll need cron too.
-=> Usable also with liits and bomb.
+Implemented trap extension with ttl behavior => Writing tests for new feature.
 
 # TODO
 
-- [x] Jot down config object
-  - [x] stats => frequency
-  - [x] limits
-  - [x] boom => destroy
-- [x] Travis integration => .travis.yml config file
-- [x] Implement behaviors
 - [ ] readme
 - [ ] logo
 - [ ] browser tests
   - [ ] By now is 100% compatible.
-- [x] clear func?
+- [x] Write tests for trap.
+- [ ] tests
+  - [ ] Throw:
+    - [ ] if no ttl
+    - [ ] if limit but no ideal
+  - [ ] force => use micro timer.
+  - [ ] destroy

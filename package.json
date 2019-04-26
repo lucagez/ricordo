@@ -11,7 +11,7 @@
     "dev": "microbundle watch",
     "lint": "eslint src/*.mjs test/*.js",
     "lint:fix": "eslint src/*.mjs test/*.js --fix",
-    "test": "npm run build && mocha --recursive test"
+    "test": "npm run build && mocha --timeout 10000 --recursive test"
   },
   "repository": {
     "type": "git",
