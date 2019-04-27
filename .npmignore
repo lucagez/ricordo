@@ -1,0 +1,9 @@
+dev/
+dist/
+examples/
+test/
+
+.travis.yml
+.eslintrc.js
+.eslintignore
+ricordo.svg
