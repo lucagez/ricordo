@@ -15,6 +15,23 @@ When you need some caching, and setting up Redis is too much.
 `Ricordo` is a **700** bytes library that fully supports Node.js and the browser.
 With `time-to-live` support and full control on the number of cached keys.
 
+## Table of Contents
+
+* [Installation](/home/gez/code/git/ricordo/README.md#installation)
+* [Usage](/home/gez/code/git/ricordo/README.md#usage)
+      * [Caching a function](/home/gez/code/git/ricordo/README.md#caching-a-function)
+      * [Expesive functions](/home/gez/code/git/ricordo/README.md#expesive-functions)
+      * [Using TTL (time-to-live)](/home/gez/code/git/ricordo/README.md#using-ttl-time-to-live)
+      * [Setting limits on number of cached keys](/home/gez/code/git/ricordo/README.md#setting-limits-on-number-of-cached-keys)
+      * [Destroy cache](/home/gez/code/git/ricordo/README.md#destroy-cache)
+      * [Force deletion](/home/gez/code/git/ricordo/README.md#force-deletion)
+* [API](/home/gez/code/git/ricordo/README.md#api)
+      * [Ricordo](/home/gez/code/git/ricordo/README.md#ricordo-1)
+      * [Config](/home/gez/code/git/ricordo/README.md#config)
+      * [Destroy](/home/gez/code/git/ricordo/README.md#destroy)
+* [License](/home/gez/code/git/ricordo/README.md#license)
+
+
 ## Installation
 
 If using npm:
@@ -197,14 +214,14 @@ setTimeout(() => cached('A'), 1001) // No cache => lifespan not renewed.
 #### Ricordo
 
 | param  | type     | required | default   | spec                    |
-|--------|----------|----------|-----------|-------------------------|
+| ------ | -------- | -------- | --------- | ----------------------- |
 | func   | function | yes      |           | Function to cache.      |
 | config | object   | no       | undefined | Defines cache behavior. |
 
 #### Config
 
 | param | type            | required                           | default   | spec                                                |
-|-------|-----------------|------------------------------------|-----------|-----------------------------------------------------|
+| ----- | --------------- | ---------------------------------- | --------- | --------------------------------------------------- |
 | ttl   | number [> 1000] | yes                                |           | Lifespan of cached key                              |
 | ideal | number          | no [yes, if `limit` is specidfied] | undefined | Ideal number of cached keys                         |
 | limit | number          | no [yes, if `ideal` is specidfied] | undefined | Max number of cached keys                           |
