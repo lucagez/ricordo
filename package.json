@@ -1,6 +1,6 @@
 {
   "name": "ricordo",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Micro function caching / memo library for JS",
   "source": "src/ricordo.mjs",
   "main": "dist/ricordo.js",

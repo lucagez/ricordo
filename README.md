@@ -11,6 +11,10 @@
 
 > Micro caching / memo library with ttl support.
 
+When you need some caching, and setting up Redis is too much.
+`Ricordo` is a **700** bytes library that fully supports Node.js and the browser.
+With `time-to-live` support and full control on the number of cached keys.
+
 ## Installation
 
 If using npm:
@@ -98,11 +102,118 @@ setTimeout(() => cached('world'), 5000 * 1001); // cache hit!!! 🎉
 
 ```
 
-## Contributing
+#### Setting limits on number of cached keys
 
-Every PR is welcomed 🎉 
-If you have ideas on how to improve upon this library don't hesitate to email me at `lucagesmundo@yahoo.it`.
+You can set a limit on the number of keys that can be cached.
+When `limit` n of inserted keys is hit, the cache will return to `ideal` n of
+items.
+The keys that are kept when `limit` is hit are the `ideal` n of items most accessed 
+in the `ttl` iterval.
 
+NOTE: A range is used so the operations of sorting and deleting the useless keys will be less frequent.
+
+```javascript
+const Ricordo = require('ricordo'); // Node.js
+
+// Cache function
+const cached = new Ricordo(a => `hello ${a}`, {
+  ttl: 5000 * 1000, // lifespan of key.
+  ideal: 2, // Ideal number of cached keys
+  limit: 4, // Max number of cached keys
+});
+
+cached('A'); // No cache
+cached('B'); // No cache
+cached('C'); // No cache
+
+// Accessing keys A, B for 5 times.
+[1, 2, 3, 4, 5].forEach(e => {
+  cached('A'); // From cache
+  cached('B'); // From cache
+});
+
+// Accessing C key for 2 times.
+[1, 2].forEach(e => {
+  cached('C'); // From cache
+});
+
+// On the next insertion the `limit` (4) is hit
+// => Only the `ideal` (2) items that are most accessed will be kept. => (A, B)
+cached('D') // New insertion
+
+// Then...
+cached('A') // From cache
+cached('B') // From cache
+cached('C') // No cache
+
+```
+
+#### Destroy cache
+
+Every ricordo instance has a `destroy` method.
+This method will clear every cached key.
+
+```javascript
+const Ricordo = require('ricordo'); // Node.js
+
+// Cache function
+const cached = new Ricordo(a => `hello ${a}`);
+
+cached('A'); // No cache
+cached('B'); // No cache
+
+cached('A'); // From cache
+cached('B'); // From cache
+
+// Destroy every cached key.
+cache.destroy();
+
+cached('A'); // No cache
+cached('B'); // No cache
+
+```
+
+#### Force deletion
+
+If `force` flag is enabled, cached keys will be deleted after `ttl`.
+Also if there are multiple hits to that key.
+
+```javascript
+const Ricordo = require('ricordo'); // Node.js
+
+// Specifying force flag.
+const cached = new Ricordo(a => `hello ${a}`, { ttl: 1000, force: true });
+
+cached('A'); // No cache
+cached('A'); // From cache
+cached('A'); // From cache
+
+setTimeout(() => cached('A'), 1001) // No cache => lifespan not renewed.
+
+```
+
+## API
+
+#### Ricordo
+
+| param  | type     | required | default   | spec                    |
+|--------|----------|----------|-----------|-------------------------|
+| func   | function | yes      |           | Function to cache.      |
+| config | object   | no       | undefined | Defines cache behavior. |
+
+#### Config
+
+| param | type            | required                           | default   | spec                                                |
+|-------|-----------------|------------------------------------|-----------|-----------------------------------------------------|
+| ttl   | number [> 1000] | yes                                |           | Lifespan of cached key                              |
+| ideal | number          | no [yes, if `limit` is specidfied] | undefined | Ideal number of cached keys                         |
+| limit | number          | no [yes, if `ideal` is specidfied] | undefined | Max number of cached keys                           |
+| force | boolean         | no                                 | false     | If set to true, cache will not be renewed after ttl |
+
+
+#### Destroy
+
+Method injected in new `Ricordo` instance. It accepts 0 arguments.
 
 ## License
 
