@@ -4,7 +4,7 @@
   <a href="https://travis-ci.org/lucagez/ricordo"><img src="https://travis-ci.com/lucagez/ricordo.svg?branch=master" alt="travis"></a>
   <a href="https://www.npmjs.org/package/ricordo"><img src="https://img.shields.io/npm/v/ricordo.svg?style=flat" alt="npm"></a>
   <img src="https://img.shields.io/badge/license-MIT-f1c40f.svg" alt="MIT">
-  <a href="https://unpkg.com/ricordo"><img src="https://img.badgesize.io/https://unpkg.com/ricordo@0.0.1/dist/ricordo.js?compression=gzip" alt="gzip size"></a>
+  <a href="https://unpkg.com/ricordo"><img src="https://img.badgesize.io/https://unpkg.com/ricordo@0.1.1/dist/ricordo.js?compression=gzip" alt="gzip size"></a>
 </p>
 
 # RICORDO
@@ -19,16 +19,16 @@ With `time-to-live` support and full control on the number of cached keys.
 
 * [Installation](/home/gez/code/git/ricordo/README.md#installation)
 * [Usage](/home/gez/code/git/ricordo/README.md#usage)
-      * [Caching a function](/home/gez/code/git/ricordo/README.md#caching-a-function)
-      * [Expesive functions](/home/gez/code/git/ricordo/README.md#expesive-functions)
-      * [Using TTL (time-to-live)](/home/gez/code/git/ricordo/README.md#using-ttl-time-to-live)
-      * [Setting limits on number of cached keys](/home/gez/code/git/ricordo/README.md#setting-limits-on-number-of-cached-keys)
-      * [Destroy cache](/home/gez/code/git/ricordo/README.md#destroy-cache)
-      * [Force deletion](/home/gez/code/git/ricordo/README.md#force-deletion)
+  * [Caching a function](/home/gez/code/git/ricordo/README.md#caching-a-function)
+  * [Expesive functions](/home/gez/code/git/ricordo/README.md#expesive-functions)
+  * [Using TTL (time-to-live)](/home/gez/code/git/ricordo/README.md#using-ttl-time-to-live)
+  * [Setting limits on number of cached keys](/home/gez/code/git/ricordo/README.md#setting-limits-on-number-of-cached-keys)
+  * [Destroy cache](/home/gez/code/git/ricordo/README.md#destroy-cache)
+  * [Force deletion](/home/gez/code/git/ricordo/README.md#force-deletion)
 * [API](/home/gez/code/git/ricordo/README.md#api)
-      * [Ricordo](/home/gez/code/git/ricordo/README.md#ricordo-1)
-      * [Config](/home/gez/code/git/ricordo/README.md#config)
-      * [Destroy](/home/gez/code/git/ricordo/README.md#destroy)
+  * [Ricordo](/home/gez/code/git/ricordo/README.md#ricordo-1)
+  * [Config](/home/gez/code/git/ricordo/README.md#config)
+  * [Destroy](/home/gez/code/git/ricordo/README.md#destroy)
 * [License](/home/gez/code/git/ricordo/README.md#license)
 
 

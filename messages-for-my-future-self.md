@@ -6,7 +6,7 @@ Implemented trap extension with ttl behavior => Writing tests for new feature.
 
 # TODO
 
-- [ ] readme
+- [x] readme
 - [x] logo
 - [ ] codepen demo?
 - [ ] examples
