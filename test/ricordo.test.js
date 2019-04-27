@@ -155,7 +155,7 @@ describe('Core Ricordo tests', () => {
 
     // Comparing execution time for non-cached (first time)
     // and cached (second time).
-    expect(a).to.be.above(199);
+    expect(a).to.be.above(198);
     expect(b).to.be.below(2);
   });
 
