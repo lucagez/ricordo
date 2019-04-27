@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="ricordo.svg" height="200px" alt="ricordo logo" />
+  <img src="https://raw.githubusercontent.com/lucagez/ricordo/master/ricordo.svg" height="200px" alt="ricordo logo" />
   <br>
   <a href="https://travis-ci.org/lucagez/ricordo"><img src="https://travis-ci.com/lucagez/ricordo.svg?branch=master" alt="travis"></a>
   <a href="https://www.npmjs.org/package/ricordo"><img src="https://img.shields.io/npm/v/ricordo.svg?style=flat" alt="npm"></a>
