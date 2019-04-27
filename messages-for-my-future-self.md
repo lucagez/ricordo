@@ -7,7 +7,9 @@ Implemented trap extension with ttl behavior => Writing tests for new feature.
 # TODO
 
 - [ ] readme
-- [ ] logo
+- [x] logo
+- [ ] codepen demo?
+- [ ] examples
 - [x] browser tests
   - [x] By now is 100% compatible.
 - [x] Write tests for trap.
