@@ -17,19 +17,19 @@ With `time-to-live` support and full control on the number of cached keys.
 
 ## Table of Contents
 
-* [Installation](/home/gez/code/git/ricordo/README.md#installation)
-* [Usage](/home/gez/code/git/ricordo/README.md#usage)
-  * [Caching a function](/home/gez/code/git/ricordo/README.md#caching-a-function)
-  * [Expesive functions](/home/gez/code/git/ricordo/README.md#expesive-functions)
-  * [Using TTL (time-to-live)](/home/gez/code/git/ricordo/README.md#using-ttl-time-to-live)
-  * [Setting limits on number of cached keys](/home/gez/code/git/ricordo/README.md#setting-limits-on-number-of-cached-keys)
-  * [Destroy cache](/home/gez/code/git/ricordo/README.md#destroy-cache)
-  * [Force deletion](/home/gez/code/git/ricordo/README.md#force-deletion)
-* [API](/home/gez/code/git/ricordo/README.md#api)
-  * [Ricordo](/home/gez/code/git/ricordo/README.md#ricordo-1)
-  * [Config](/home/gez/code/git/ricordo/README.md#config)
-  * [Destroy](/home/gez/code/git/ricordo/README.md#destroy)
-* [License](/home/gez/code/git/ricordo/README.md#license)
+  - [Installation](#installation)
+  - [Usage](#usage)
+      - [Caching a function](#caching-a-function)
+      - [Expesive functions](#expesive-functions)
+      - [Using TTL (time-to-live)](#using-ttl-time-to-live)
+      - [Setting limits on number of cached keys](#setting-limits-on-number-of-cached-keys)
+      - [Destroy cache](#destroy-cache)
+      - [Force deletion](#force-deletion)
+  - [API](#api)
+      - [Ricordo](#ricordo)
+      - [Config](#config)
+      - [Destroy](#destroy)
+  - [License](#license)
 
 
 ## Installation
