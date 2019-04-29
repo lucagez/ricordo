@@ -84,12 +84,10 @@ describe('Trap tests', () => {
     expect(h).to.be.a('number').above(198);
   });
 
-  it('Should throw if a config object is provided and ttl is not present or smaller than 1000', () => {
-    const withSmaller = () => new Ricordo(a => a + 1, { ttl: 100 });
-    const withOut = () => new Ricordo(a => a + 1, {});
+  it('Should throw if ttl is smaller than 1000', () => {
+    const smaller = () => new Ricordo(a => a + 1, { ttl: 100 });
 
-    expect(withSmaller).to.throw();
-    expect(withOut).to.throw();
+    expect(smaller).to.throw();
   });
 
   it('Should throw if limit is provided without ideal prop', () => {

@@ -13,7 +13,7 @@ export default class _Trap {
     this.limit = limit;
     this.force = force;
 
-    if (!ttl || ttl < 1000) throw new Error('prop `ttl` is required when setting up custom caching');
+    if (ttl < 1000) throw new Error('`ttl` must be > 1000 ms');
     if (this.limit && !this.ideal) throw new Error('prop `ideal` is required when setting `limit` prop');
 
     this.stats = new Map();
@@ -26,7 +26,7 @@ export default class _Trap {
 
   get(key) {
     // Updating stats incrementing usage counter.
-    const n = this.stats.get(key) || 0;
+    const n = this.stats.get(key);
     this.stats.set(key, n + 1);
 
     return this.store.get(key);
@@ -34,9 +34,9 @@ export default class _Trap {
 
   set(key, value) {
     if (this.limit && this.store.size >= this.limit - 1) this.onLimit();
+    if (this.ttl) setTimeout(() => this.onTimeout(key), this.ttl);
 
-    // Initializing ttl.
-    setTimeout(() => this.onTimeout(key), this.ttl);
+    this.stats.set(key, 0);
     return this.store.set(key, value);
   }
 
@@ -50,10 +50,10 @@ export default class _Trap {
 
   onTimeout(key) {
     // When force is set to `true` => key is delete from cache by default.
-    if (this.stats.get(key) === 0 || !this.stats.has(key) || this.force) this.store.delete(key);
+    if (this.stats.get(key) === 0 || this.force) this.store.delete(key);
     else {
       this.stats.set(key, 0);
-      setTimeout(() => this.onTimeout(key), this.ttl);
+      if (this.ttl) setTimeout(() => this.onTimeout(key), this.ttl);
     }
   }
 

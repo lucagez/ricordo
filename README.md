@@ -243,7 +243,7 @@ class App extends Component {
 
 | param | type            | required                           | default   | spec                                                |
 | ----- | --------------- | ---------------------------------- | --------- | --------------------------------------------------- |
-| ttl   | number [> 1000] | yes                                |           | Lifespan of cached key                              |
+| ttl   | number [> 1000] | no                                | undefined | Lifespan of cached key                              |
 | ideal | number          | no [yes, if `limit` is specified] | undefined | Ideal number of cached keys                         |
 | limit | number          | no [yes, if `ideal` is specified] | undefined | Max number of cached keys                           |
 | force | boolean         | no                                 | false     | If set to true, cache will not be renewed after ttl |
