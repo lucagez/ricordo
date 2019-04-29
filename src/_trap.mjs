@@ -40,6 +40,14 @@ export default class _Trap {
     return this.store.set(key, value);
   }
 
+  clear() {
+    this.store.clear();
+  }
+
+  delete(key) {
+    this.store.delete(key);
+  }
+
   onTimeout(key) {
     // When force is set to `true` => key is delete from cache by default.
     if (this.stats.get(key) === 0 || !this.stats.has(key) || this.force) this.store.delete(key);

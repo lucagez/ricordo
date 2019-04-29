@@ -230,7 +230,10 @@ setTimeout(() => cached('A'), 1001) // No cache => lifespan not renewed.
 
 #### Destroy
 
-Method injected in new `Ricordo` instance. It accepts 0 arguments.
+
+| param | type    | required                           | default   | spec                                                                         |
+|-------|---------|------------------------------------|-----------|------------------------------------------------------------------------------|
+| key   | any     | no                                 | undefined | key to delete from cache. If no key is specified, every key will be deleted. |
 
 ## License
 

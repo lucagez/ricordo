@@ -140,4 +140,25 @@ describe('Trap tests', () => {
     expect(c).to.be.a('number').above(198);
     expect(d).to.be.a('number').above(198);
   });
+
+  it('Should destroy single cached key when `destroy` method is called with argument', async () => {
+    const func = async (arg) => {
+      await sleep(200);
+      return arg.n * 2;
+    };
+    const cached = new Ricordo(func, { ttl: 1000 });
+
+    const a = await bench(cached, [{ n: 1 }]); // 200ms
+    const b = await bench(cached, [{ n: 2 }]); // 200ms
+
+    cached.destroy({ n: 2 });
+
+    const c = await bench(cached, [{ n: 1 }]); // 0ms
+    const d = await bench(cached, [{ n: 2 }]); // 200ms
+
+    expect(a).to.be.a('number').above(198);
+    expect(b).to.be.a('number').above(198);
+    expect(c).to.be.a('number').below(5);
+    expect(d).to.be.a('number').above(198);
+  });
 });

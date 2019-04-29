@@ -13,5 +13,7 @@ module.exports = {
         "object-curly-newline": "off",
         "no-confusing-arrow": "off",
         "no-prototype-builtins": "off",
+        "class-methods-use-this": "off",
+        "prefer-rest-params": "off",
     }
 };
