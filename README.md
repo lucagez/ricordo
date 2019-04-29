@@ -216,7 +216,7 @@ setTimeout(() => cached('A'), 1001) // No cache => lifespan not renewed.
 import React, { Component } from 'react';
 import Ricordo from 'ricordo';
 
-const C = ({ a }) => <div>hello {a}</div>;
+const C = a => <div>hello {a}</div>;
 
 const cached = new Ricordo(C);
 
@@ -225,7 +225,7 @@ class App extends Component {
   // Invoking cached function => now 'world' is a registered key
   // The next time that the function will be computed with 'world' as argument,
   // the previously created component will be returned.
-  render = () => <div className="App">{cached('world')}</div>;
+  render = () => <div>{cached('world')}</div>;
 }
 
 ```
