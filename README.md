@@ -41,7 +41,7 @@ npm install ricordo
 
 If not:
 ```html
-<script src="https://unpkg.com/ricordo@0.1.1/dist/ricordo.umd.js"></script>
+<script src="https://unpkg.com/ricordo@0.2.1/dist/ricordo.umd.js"></script>
 ```
 
 ## Usage
