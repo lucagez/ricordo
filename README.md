@@ -25,7 +25,7 @@ With `time-to-live` support and full control on the number of cached keys.
       - [Setting limits on number of cached keys](#setting-limits-on-number-of-cached-keys)
       - [Destroy cache](#destroy-cache)
       - [Force deletion](#force-deletion)
-      - [Caching React component](#caching-eact-component)
+      - [Caching React component](#caching-react-component)
   - [API](#api)
       - [Ricordo](#ricordo)
       - [Config](#config)
