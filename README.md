@@ -25,6 +25,7 @@ With `time-to-live` support and full control on the number of cached keys.
       - [Setting limits on number of cached keys](#setting-limits-on-number-of-cached-keys)
       - [Destroy cache](#destroy-cache)
       - [Force deletion](#force-deletion)
+      - [Caching React component](#caching-eact-component)
   - [API](#api)
       - [Ricordo](#ricordo)
       - [Config](#config)
@@ -206,6 +207,26 @@ cached('A'); // From cache
 cached('A'); // From cache
 
 setTimeout(() => cached('A'), 1001) // No cache => lifespan not renewed.
+
+```
+
+#### Caching React component
+
+```jsx
+import React, { Component } from 'react';
+import Ricordo from 'ricordo';
+
+const C = ({ a }) => <div>hello {a}</div>;
+
+const cached = new Ricordo(C);
+
+class App extends Component {
+
+  // Invoking cached function => now 'world' is a registered key
+  // The next time that the function will be computed with 'world' as argument,
+  // the previously created component will be returned.
+  render = () => <div className="App">{cached('world')}</div>;
+}
 
 ```
 
