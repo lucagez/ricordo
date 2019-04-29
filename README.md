@@ -216,7 +216,7 @@ setTimeout(() => cached('A'), 1001) // No cache => lifespan not renewed.
 import React, { Component } from 'react';
 import Ricordo from 'ricordo';
 
-const C = a => <div>hello {a}</div>;
+const C = a => <h1>hello {a}</h1>;
 
 const cached = new Ricordo(C);
 
